@@ -14,7 +14,7 @@ app = Flask(__name__)
 def generate_text():
     input_text = request.json.get("input_text")
     if not input_text:
-        return jsonify({"message": "input_text is missing in payload!"})
+        return jsonify({"error": "Bad Request", "message": "input_text is missing in payload!"}), 400
 
     # Create a more specific prompt structure for question answering
     prompt = f"{input_text}"
